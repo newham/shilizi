@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+<a href="{% url 'index' %}">[back]</a>
+<h1>BP Neural Network</h1>
+<table>
+
+    <thead>
+    <tr>
+        <th>index</th>
+        <th>name</th>
+        <th>tag</th>
+        <th>action</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for img in imgs %}
+    <tr>
+        <td>{{forloop.counter}}</td>
+        <td>{{img}}</td>
+        <td><img src="{% url 'index'%}{{img_dir}}{{img}}"></td>
+        <td><a href="{% url 'neural_network:index'%}">test</a></td>
+    </tr>
+    {% endfor %}
+    </tbody>
+
+</table>
+{% endblock content %}
