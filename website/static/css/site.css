@@ -1,28 +1,10 @@
-body {
-    padding: 0 10%;
-    margin: 0 10%;
-    /*background: #eeeeee;*/
-}
-
-h1 {
-    border-bottom: 1px solid #3875d7;
-}
-
-table {
-    /*border-spacing: 0;*/
-    /*width: 100%;*/
-    /*text-align: center;*/
-}
-
-thead {
-    background: #5897fb;
-    color: white;
+body{
+    padding-top: 70px;
 }
 
 .mnist-img {
-    height: 48px;
-    width: 48px;
-    padding: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .mnist-img:hover {
@@ -30,7 +12,3 @@ thead {
     cursor: pointer;
 }
 
-.content {
-    /*margin-top: 20px;*/
-    padding: 20px;
-}

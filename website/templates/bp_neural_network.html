@@ -1,31 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
-<a href="{% url 'index' %}">[back]</a>
-<h1>BP Neural Network</h1>
-<p>>>click image to test</p>
 
-<div>
-    {% for img in imgs %}
-    <img src="{% url 'index'%}{{img_dir}}{{img}}" onclick="query('{{img}}')" title="{{img}}" class="mnist-img">
-    {% endfor %}
+
+<ol class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li class="active">BP Neural Network</li>
+</ol>
+<div class="panel panel-default">
+    <div class="panel-heading">Click image to test</div>
+    <div class="panel-body">
+        <div class="row">
+            {% for img in imgs %}
+            <img src="{% url 'index'%}{{img_dir}}{{img}}" onclick="query('{{img}}')" title="{{img}}"
+                 class="col-xs-3 col-md-1 mnist-img">
+            {% endfor %}
+        </div>
+    </div>
 </div>
-<div>>></div>
-<div style="text-align: center;">
-    <table id="result-border" style="margin:0px auto;">
-        <tr>
-            <td><img id="result-img" src="" class="mnist-img"></td>
-            <td><h2>= <span id="result" style="color:firebrick;"></span> , right ?</h2></td>
-        </tr>
-    </table>
-</div>
+
+<div class="modal fade" id="result-modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Test Result</h4>
+            </div>
+            <div class="modal-body">
+                <h2 class="text-center">
+                    <img id="result-img" src="" width="56px;" height="56px;">
+                    = <span id="result" style="color:firebrick;"></span> , right ?
+                </h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">OK</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
 <script>
-    $("#result-border").hide();
-
     function query(img) {
         $.get("{% url 'neural_network:index'%}api/query/" + img, function (result) {
             $("#result").html(result.label);
             $("#result-img").attr('src', "{% url 'index'%}{{img_dir}}" + img);
-            $("#result-border").show();
+            $('#result-modal').modal('show');
         });
     }
 </script>

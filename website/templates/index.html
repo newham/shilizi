@@ -1,7 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
-<h1>Menu</h1>
-<ul>
-    <li><a href="{% url 'neural_network:index' %}">BP Neural Network</a></li>
-</ul>
+{% load staticfiles %}
+<div class="text-center">
+    <img src="{% static 'img/favicon.ico' %}">
+    <h1 class="text-danger">Use Machine Learning to Tell the Future</h1>
+    <blockquote>
+        <p class="text-left lead text-warning">
+            Machine learning is the modern science of finding patterns and making predictions from data based on work in
+            multivariate statistics, data mining, pattern recognition, and advanced/predictive analytics.
+        </p>
+    </blockquote>
+</div>
+
 {% endblock content %}
