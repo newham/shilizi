@@ -1,16 +1,36 @@
 body {
-    /*padding: 0;*/
-    /*margin: 0;*/
+    padding: 0 10%;
+    margin: 0 10%;
+    /*background: #eeeeee;*/
 }
-table{
-    border-spacing: 0;
-    width: 100%;
-    text-align: center;
+
+h1 {
+    border-bottom: 1px solid #3875d7;
 }
-thead{
-    background: #3875d7;
+
+table {
+    /*border-spacing: 0;*/
+    /*width: 100%;*/
+    /*text-align: center;*/
+}
+
+thead {
+    background: #5897fb;
     color: white;
 }
-td {
-    border-bottom: 1px solid black;
+
+.mnist-img {
+    height: 48px;
+    width: 48px;
+    padding: 3px;
+}
+
+.mnist-img:hover {
+    background: #5897fb;
+    cursor: pointer;
+}
+
+.content {
+    /*margin-top: 20px;*/
+    padding: 20px;
 }

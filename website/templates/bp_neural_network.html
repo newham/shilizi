@@ -2,26 +2,32 @@
 {% block content %}
 <a href="{% url 'index' %}">[back]</a>
 <h1>BP Neural Network</h1>
-<table>
+<p>>>click image to test</p>
 
-    <thead>
-    <tr>
-        <th>index</th>
-        <th>name</th>
-        <th>tag</th>
-        <th>action</th>
-    </tr>
-    </thead>
-    <tbody>
+<div>
     {% for img in imgs %}
-    <tr>
-        <td>{{forloop.counter}}</td>
-        <td>{{img}}</td>
-        <td><img src="{% url 'index'%}{{img_dir}}{{img}}"></td>
-        <td><a href="{% url 'neural_network:index'%}">test</a></td>
-    </tr>
+    <img src="{% url 'index'%}{{img_dir}}{{img}}" onclick="query('{{img}}')" title="{{img}}" class="mnist-img">
     {% endfor %}
-    </tbody>
+</div>
+<div>>></div>
+<div style="text-align: center;">
+    <table id="result-border" style="margin:0px auto;">
+        <tr>
+            <td><img id="result-img" src="" class="mnist-img"></td>
+            <td><h2>= <span id="result" style="color:firebrick;"></span> , right ?</h2></td>
+        </tr>
+    </table>
+</div>
+<script>
+    $("#result-border").hide();
 
-</table>
+    function query(img) {
+        $.get("{% url 'neural_network:index'%}api/query/" + img, function (result) {
+            $("#result").html(result.label);
+            $("#result-img").attr('src', "{% url 'index'%}{{img_dir}}" + img);
+            $("#result-border").show();
+        });
+    }
+</script>
+
 {% endblock content %}

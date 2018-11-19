@@ -21,8 +21,8 @@ app_name = 'neural_network'
 urlpatterns = [
     path('api/', include(
         [
-            path('test/', api.test, name='api/test'),
-            path('query/<name>/', api.query, name='api/query'),
+            path('test/', api.test),
+            path('query/<name>/', api.query),
         ]
     )),
     path('', views.bp_neural_network, name='index'),
